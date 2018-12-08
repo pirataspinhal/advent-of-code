@@ -37,16 +37,13 @@ lineReader.on('line', (line) => {
     const inchesTall = parseInt(userInput[5]);
 
     rightClothIDArray.push(id);
-    const indexOfActualIdaa = rightClothIDArray.indexOf(id);
     for(let xAxiosPoint = inchesFromLeft; xAxiosPoint < inchesFromLeft + inchesWide; xAxiosPoint += 1) {
         for(let yAxiosPoint = inchesFromTop; yAxiosPoint < inchesFromTop + inchesTall; yAxiosPoint += 1) {
-            const yAxiosString = yAxiosPoint.toString();
-            const xAxiosString = xAxiosPoint.toString();
-            if(!isYAxiosAlreadyInUse(clothMatrix, yAxiosString)) {
-                clothMatrix[yAxiosString] = {};
-                clothMatrix[yAxiosString][xAxiosString] = id;
-            } else if(isClothBeingUsedAtThisPosition(clothMatrix, yAxiosString, xAxiosString)) {
-                const indexOfOlderId = rightClothIDArray.indexOf(clothMatrix[yAxiosString][xAxiosString]);
+            if(!isYAxiosAlreadyInUse(clothMatrix, yAxiosPoint)) {
+                clothMatrix[yAxiosPoint] = {};
+                clothMatrix[yAxiosPoint][xAxiosPoint] = id;
+            } else if(isClothBeingUsedAtThisPosition(clothMatrix, yAxiosPoint, xAxiosPoint)) {
+                const indexOfOlderId = rightClothIDArray.indexOf(clothMatrix[yAxiosPoint][xAxiosPoint]);
                 if (indexOfOlderId !== -1) {
                     rightClothIDArray.splice(indexOfOlderId, 1);
                 }
@@ -54,9 +51,9 @@ lineReader.on('line', (line) => {
                 if (indexOfActualId !== -1) {
                     rightClothIDArray.splice(indexOfActualId, 1);
                 }
-                clothMatrix[yAxiosString][xAxiosString] = 'X';         
+                clothMatrix[yAxiosPoint][xAxiosPoint] = 'X';         
             } else {
-                clothMatrix[yAxiosString][xAxiosString] = id;
+                clothMatrix[yAxiosPoint][xAxiosPoint] = id;
             }
         }
     }
@@ -67,7 +64,7 @@ lineReader.on('close', () => {
         if(clothMatrix.hasOwnProperty(indexLine)) {
             for(let indexColumn in clothMatrix[indexLine]) {
                 if(clothMatrix[indexLine][indexColumn] == 'X'
-                    && clothMatrix.hasOwnProperty(indexColumn)) {
+                    && clothMatrix[indexLine].hasOwnProperty(indexColumn)) {
                     overlapCount += 1;
                 }
             }
