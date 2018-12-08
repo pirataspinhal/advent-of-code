@@ -13,7 +13,7 @@ const lineReader = require('readline').createInterface({
     input: fs.createReadStream(filePath),
 });
 
-let frequency = 0;
+let finalFrequency = 0;
 let repeatedFrequency = -1;
 const arrayOfNumbersToChangeFrequency = [];
 const arrayOfFrequencies = [0];
@@ -34,17 +34,17 @@ function getNextIndexValueLimitedByArrayLength(index, array) {
 lineReader.on('line', (line) => {
     const numberToChangeFrequency = parseInt(line);
     arrayOfNumbersToChangeFrequency.push(numberToChangeFrequency);
-    frequency = processFrequency(numberToChangeFrequency, frequency);
+    finalFrequency = processFrequency(numberToChangeFrequency, finalFrequency);
 });
 
 lineReader.on('close', () => {
-    let frequencyToTestRepeat = frequency;
+    let frequencyToTestRepeat = finalFrequency;
     for(let i = 0;
         repeatedFrequency === -1;
         i = getNextIndexValueLimitedByArrayLength(i, arrayOfNumbersToChangeFrequency)) {
         frequencyToTestRepeat =
             processFrequency(arrayOfNumbersToChangeFrequency[i], frequencyToTestRepeat);
     }
-    console.log('Frequency after changes: ' + frequency);
+    console.log('Frequency after changes: ' + finalFrequency);
     console.log('Repeated frequency: ' + repeatedFrequency);
 });
