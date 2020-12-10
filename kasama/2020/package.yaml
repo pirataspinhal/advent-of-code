@@ -64,3 +64,8 @@ executables:
   day9:
     <<: *executable
     source-dirs: app/day9
+  day10:
+    <<: *executable
+    source-dirs: app/day10
+    dependencies:
+    - adventOfCode2020
