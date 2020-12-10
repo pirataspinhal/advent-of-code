@@ -1,7 +1,7 @@
 name:                adventOfCode2020
 version:             0.1.0.0
 github:              "Kasama/adventOfCode2020"
-license:             BSD3
+license:             MIT
 author:              "Roberto Alegro"
 maintainer:          "robertoaall@gmail.com"
 copyright:           "2020 Roberto Alegro"
@@ -31,18 +31,15 @@ library:
   source-dirs: src
 
 executables:
-  adventOfCode2020-exe: &executable
+  day1: &executable
     main:                Main.hs
-    source-dirs:         app
+    source-dirs: app/day1
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
     - adventOfCode2020
-  day1:
-    <<: *executable
-    source-dirs: app/day1
   day2:
     <<: *executable
     source-dirs: app/day2
@@ -67,14 +64,3 @@ executables:
   day9:
     <<: *executable
     source-dirs: app/day9
-
-tests:
-  adventOfCode2020-test:
-    main:                Spec.hs
-    source-dirs:         test
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - adventOfCode2020
