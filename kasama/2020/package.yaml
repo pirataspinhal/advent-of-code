@@ -26,6 +26,7 @@ dependencies:
 - array
 - containers
 - sort
+- vector
 
 library:
   source-dirs: src
@@ -67,5 +68,3 @@ executables:
   day10:
     <<: *executable
     source-dirs: app/day10
-    dependencies:
-    - adventOfCode2020

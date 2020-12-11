@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1be18b9a65ff33f4ea90b3d7aaeb3df7335f9f7fa8b2a33747b41caa462a2154
+-- hash: e56c32812bc7ef5e425fa4cdddcd7cfa981edbd8e5baf76b53c5da7f6844c85c
 
 name:           adventOfCode2020
 version:        0.1.0.0
@@ -27,8 +27,8 @@ source-repository head
 
 library
   exposed-modules:
-      Graph
       Lib
+      Lib.Graph
       Parser
   other-modules:
       Paths_adventOfCode2020
@@ -41,6 +41,7 @@ library
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
 
 executable day1
@@ -58,6 +59,7 @@ executable day1
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
 
 executable day10
@@ -75,6 +77,7 @@ executable day10
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
 
 executable day2
@@ -92,6 +95,7 @@ executable day2
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
 
 executable day3
@@ -109,6 +113,7 @@ executable day3
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
 
 executable day4
@@ -126,6 +131,7 @@ executable day4
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
 
 executable day5
@@ -143,6 +149,7 @@ executable day5
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
 
 executable day6
@@ -160,6 +167,7 @@ executable day6
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
 
 executable day7
@@ -177,6 +185,7 @@ executable day7
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
 
 executable day8
@@ -194,6 +203,7 @@ executable day8
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
 
 executable day9
@@ -211,4 +221,5 @@ executable day9
     , parsec
     , sort
     , split
+    , vector
   default-language: Haskell2010
