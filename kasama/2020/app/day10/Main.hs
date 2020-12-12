@@ -14,14 +14,18 @@ instance Show (CGraph a b) where
   show cgraph = show $ graph cgraph
 toCGraph (a, b, c) = CGraph { graph = a, getNode = b, getVertex = c}
 
--- Main
+-- >>> (multOneThree . findJoltDifferences) <$> input
+-- 1856
+
+-- >>> possibleArrangements <$> input
+-- 2314037239808
 main :: IO ()
 main = do
   input <- input
   putStr "number of 1-jolts multiplied by the number of 3-jolts: "
   print $ multOneThree $ findJoltDifferences input
   putStr "number of possible transformer combinations: "
-  print $ possibleArrangements testInput
+  print $ possibleArrangements input
 
 input :: IO [Int]
 input = fmap read . lines <$> readFile "inputs/day10.in"
@@ -30,6 +34,7 @@ testInput :: [Int]
 testInput = [ 28 , 33 , 18 , 42 , 31 , 14 , 46 , 20 , 48 , 47 , 24 , 23 , 49 , 45 , 19
             , 38 , 39 , 11 , 1 , 32 , 25 , 35 , 8 , 17 , 7 , 9 , 4 , 2 , 34 , 10 , 3 ]
 
+multOneThree :: Num a => (a, b, a) -> a
 multOneThree (a, _, b) = a * b
 
 -- >>> findJoltDifferences smallExample

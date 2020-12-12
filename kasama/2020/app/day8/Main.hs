@@ -1,9 +1,19 @@
 module Main where
 
 import Text.Parsec
-import Text.Parsec.String
-import Control.Monad
-import Data.Array
+    ( char,
+      digit,
+      oneOf,
+      string,
+      choice,
+      many1,
+      many,
+      parse,
+      try,
+      ParseError )
+import Text.Parsec.String ( Parser )
+import Control.Monad ( void )
+import Data.Array ( (!), (//), bounds, listArray, Array )
 import Data.Set ( insert, member, Set, empty )
 
 data Instruction = Noop Int

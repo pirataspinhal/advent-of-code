@@ -2,17 +2,25 @@ module Main where
 
 import Data.Maybe ( isJust )
 
+-- First number to break the pattern:
+-- >>> findWrongInStream 25 . getStream <$> input
+-- Just 26796446
+
+-- Encryption Weakness
+-- >>> (flip getEncryptionWeakness) 26796446 <$> getStream <$> input
+-- Just 3353494
+
+input = readFile "inputs/day9.in"
+
 main :: IO ()
 main = do
   input <- input
   let stream = getStream input
   putStr "first number to break the pattern: "
-  let weaknessTarget = findWrongInStream stream 25
+  let weaknessTarget = findWrongInStream 25 stream
   print weaknessTarget
   putStr "encryption weakness is: "
   print $ getEncryptionWeakness stream =<< weaknessTarget
-
-input = readFile "inputs/day9.in"
 
 getStream :: String -> [Int]
 getStream input = map read (lines input)
@@ -63,9 +71,10 @@ findSumFrom stream target = findSumFrom' 2 stream target
       | currentSum < target = findSumFrom' (iter + 1) stream target
       where
         currentSum = sum (take iter stream)
--- >>> findWrongInStream testInput preambleSize
+
+-- >>> findWrongInStream preambleSize testInput
 -- Just 127
-findWrongInStream stream preambleSize
+findWrongInStream preambleSize stream
   | length stream <= preambleSize = Nothing
-  | twoSumExists (take preambleSize stream) (stream !! preambleSize) = findWrongInStream (tail stream) preambleSize
+  | twoSumExists (take preambleSize stream) (stream !! preambleSize) = findWrongInStream preambleSize (tail stream)
   | otherwise = Just $ stream !! preambleSize
