@@ -27,6 +27,7 @@ dependencies:
 - containers
 - sort
 - vector
+- arithmoi
 
 library:
   source-dirs: src
@@ -68,3 +69,12 @@ executables:
   day10:
     <<: *executable
     source-dirs: app/day10
+  day11:
+    <<: *executable
+    source-dirs: app/day11
+  day12:
+    <<: *executable
+    source-dirs: app/day12
+  day13:
+    <<: *executable
+    source-dirs: app/day13
