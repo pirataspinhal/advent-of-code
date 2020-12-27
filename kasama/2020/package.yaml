@@ -87,3 +87,9 @@ executables:
   day16:
     <<: *executable
     source-dirs: app/day16
+  day17:
+    <<: *executable
+    source-dirs: app/day17
+  day18:
+    <<: *executable
+    source-dirs: app/day18
