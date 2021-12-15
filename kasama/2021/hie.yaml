@@ -1,0 +1,4 @@
+cradle:
+  stack:
+    - path: "."
+      component: "adventOfCode2021:exe:day1"
