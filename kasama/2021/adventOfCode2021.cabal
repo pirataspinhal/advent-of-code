@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.33.0.
+-- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: cb11134d122478b314cc9ba4b7fd54972b3de2dea421db2b841198e724ec9346
+-- hash: 24450021b631cd6882f686736e08da8856eefd1edd96ec9d8135732ddd4af3f9
 
 name:           adventOfCode2021
 version:        0.1.0.0
@@ -27,9 +27,8 @@ source-repository head
 
 library
   exposed-modules:
-      Graph
-      Lib
-      Parser
+      Lib.Graph
+      Lib.Parser
   other-modules:
       Paths_adventOfCode2021
   hs-source-dirs:

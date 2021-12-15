@@ -1,4 +1,4 @@
-module Parser where
+module Lib.Parser where
 
 import Control.Monad (void)
 import Text.Parsec
@@ -11,3 +11,5 @@ number :: Parser Int
 number = do
   num <- many digit
   return $ read num
+
+magic = putStrLn "magic"

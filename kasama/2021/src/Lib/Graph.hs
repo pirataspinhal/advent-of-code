@@ -1,7 +1,7 @@
-module Graph ( CGraph
-             , toCGraph
-             , module Data.Graph
-             ) where
+module Lib.Graph ( CGraph
+                 , toCGraph
+                 , module Data.Graph
+                 ) where
 
 import Data.Graph
 

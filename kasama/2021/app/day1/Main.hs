@@ -1,5 +1,7 @@
 module Main where
 
+import qualified Lib.Parser as Parser
+
 main :: IO ()
 main = do
   input <- input
@@ -7,6 +9,7 @@ main = do
   print $ partOne input
   putStr "Second part: "
   print $ partTwo input
+  Parser.magic
 
 input = map read . lines <$> readFile "inputs/day1.in"
 

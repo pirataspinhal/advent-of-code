@@ -9,9 +9,9 @@ import Text.Parsec.String (Parser)
 main = do
   fish <- parsedInput school
   putStr "Part One: "
-  print . length $ simulate 6 2 80 fish
-  putStr "Part Two: "
-  print . length $ simulate 6 2 256 fish
+  -- print . length $ simulate 6 2 80 fish
+  -- putStr "Part Two: "
+  -- print . length $ simulate 6 2 256 fish
 
 parsedInput :: Parser b -> IO b
 parsedInput p = do
@@ -47,8 +47,8 @@ simulate lifespan birthPenalty days school = foldl (\school _ -> simulate' schoo
     simulate' (0 : school) = lifespan : (lifespan + birthPenalty) : simulate' school
     simulate' (fish : school) = (fish - 1) : simulate' school
 
-ssimulate :: Int -> Int -> Int -> School -> School
-ssimulate lifespan birthPenalty days school = foldl (\school _ -> simulate' school) school [1 .. days]
-  where
-    simulate' school = foldl (\school life -> ) school lifes
-    lifes = [0..lifespan+birthPenalty]
+-- ssimulate :: Int -> Int -> Int -> School -> School
+-- ssimulate lifespan birthPenalty days school = foldl (\school _ -> simulate' school) school [1 .. days]
+--   where
+--     simulate' school = foldl (\school life -> ) school lifes
+--     lifes = [0..lifespan+birthPenalty]
