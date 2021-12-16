@@ -3,12 +3,12 @@ module Main where
 import Control.Monad (void)
 import Text.Parsec
 import Text.Parsec.String (Parser)
+import Lib.Parser ( eor, number, parseInput )
 
 main :: IO ()
 main = do
-  input <- input
   putStr "First part: "
-  instructions <- parsedInput instructions
+  instructions <- parseInput instructions input
   print $ partOne instructions
   putStr "Second part: "
   print $ partTwo instructions
@@ -23,24 +23,11 @@ partTwo instructions = position submarine * depth submarine
 
 input = readFile "inputs/day2.in"
 
-parsedInput :: Parser b -> IO b
-parsedInput p = do
-  Right parsed <- parse' p <$> input
-  return parsed
-
-parse' :: Parser a -> String -> Either ParseError a
-parse' p = parse p ""
-
 data Instruction = Forward Int | Down Int | Up Int
   deriving (Show, Eq)
 
 data Submarine = Submarine {depth :: Int, position :: Int, aim :: Int}
   deriving (Show, Eq)
-
-number :: Parser Int
-number = do
-  num <- spaces *> many digit
-  return $ read num
 
 instruction :: Parser Instruction
 instruction = do
@@ -52,9 +39,6 @@ instruction = do
       "forward" -> Forward
       "down" -> Down
       "up" -> Up
-
-eor :: Parser ()
-eor = choice [void $ try $ char '\n', void eof]
 
 instructions :: Parser [Instruction]
 instructions = many (instruction <* eor)

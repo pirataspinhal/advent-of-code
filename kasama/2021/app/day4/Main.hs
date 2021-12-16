@@ -4,6 +4,7 @@ import Control.Monad (void)
 import Data.Array
 import Text.Parsec
 import Text.Parsec.String (Parser)
+import Lib.Parser
 
 main :: IO ()
 main = do
@@ -12,22 +13,6 @@ main = do
   putStr "Second part: "
 
 input = readFile "inputs/day4.in"
-
-parsedInput :: Parser b -> IO b
-parsedInput p = do
-  Right parsed <- parse' p <$> input
-  return parsed
-
-parse' :: Parser a -> String -> Either ParseError a
-parse' p = parse p ""
-
-eor :: Parser ()
-eor = choice [void $ try $ char '\n', void eof]
-
-number :: Parser Int
-number = do
-  num <- spaces *> many digit
-  return $ read num
 
 numbersLine :: Parser [Int]
 numbersLine = many1 (number <* optional (oneOf ", "))
@@ -65,8 +50,7 @@ boards = many (board <* optional eor)
 inputParser :: Parser [Board]
 inputParser = do
   numbers <- numbersLine
-  b <- many1 board
-  return b
+  many1 board
 
 type BingoNumbers = [Int]
 

@@ -4,31 +4,16 @@ import qualified Data.Map as Map
 import Control.Monad (void)
 import Text.Parsec hiding (Line)
 import Text.Parsec.String (Parser)
+import Lib.Parser
 
 main = do
-  lines <- parsedInput (many line)
+  lines <- parseInput (many line) input
   putStr "Part One: "
   print . countAbove 2 . paintLines $ cardinalLines lines
   putStr "Part Two: "
   print . countAbove 2 . paintLines $ lines
 
 input = readFile "inputs/day5.in"
-
-parsedInput :: Parser b -> IO b
-parsedInput p = do
-  Right parsed <- parse' p <$> input
-  return parsed
-
-parse' :: Parser a -> String -> Either ParseError a
-parse' p = parse p ""
-
-eor :: Parser ()
-eor = choice [void $ try $ char '\n', void eof]
-
-number :: Parser Int
-number = do
-  num <- spaces *> many digit
-  return $ read num
 
 line :: Parser Line
 line = do
