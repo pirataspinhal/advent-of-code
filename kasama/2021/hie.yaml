@@ -38,3 +38,15 @@ cradle:
 
     - path: "./app/day6/Paths_adventOfCode2021.hs"
       component: "adventOfCode2021:exe:day6"
+
+    - path: "./app/day7/Main.hs"
+      component: "adventOfCode2021:exe:day7"
+
+    - path: "./app/day7/Paths_adventOfCode2021.hs"
+      component: "adventOfCode2021:exe:day7"
+
+    - path: "./app/day8/Main.hs"
+      component: "adventOfCode2021:exe:day8"
+
+    - path: "./app/day8/Paths_adventOfCode2021.hs"
+      component: "adventOfCode2021:exe:day8"

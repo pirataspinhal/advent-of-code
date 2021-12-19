@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 24450021b631cd6882f686736e08da8856eefd1edd96ec9d8135732ddd4af3f9
+-- hash: dc2a7524362db674816039ddf7ffe8a1b355d5b3c793558a6f0d03eeef324401
 
 name:           adventOfCode2021
 version:        0.1.0.0
@@ -28,6 +28,7 @@ source-repository head
 library
   exposed-modules:
       Lib.Graph
+      Lib.Math
       Lib.Parser
   other-modules:
       Paths_adventOfCode2021
@@ -145,6 +146,44 @@ executable day6
       Paths_adventOfCode2021
   hs-source-dirs:
       app/day6
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      adventOfCode2021
+    , arithmoi
+    , array
+    , base >=4.7 && <5
+    , containers
+    , parsec
+    , sort
+    , split
+    , vector
+  default-language: Haskell2010
+
+executable day7
+  main-is: Main.hs
+  other-modules:
+      Paths_adventOfCode2021
+  hs-source-dirs:
+      app/day7
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      adventOfCode2021
+    , arithmoi
+    , array
+    , base >=4.7 && <5
+    , containers
+    , parsec
+    , sort
+    , split
+    , vector
+  default-language: Haskell2010
+
+executable day8
+  main-is: Main.hs
+  other-modules:
+      Paths_adventOfCode2021
+  hs-source-dirs:
+      app/day8
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       adventOfCode2021
